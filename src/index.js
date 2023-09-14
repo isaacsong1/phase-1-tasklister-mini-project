@@ -2,16 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // your code here
   document.querySelector('form').addEventListener('submit', (event) => {
     event.preventDefault();
-
-    // Create li element then append in #tasks 
-    const li = document.createElement('li');
-    li.textContent = event.target.querySelector('input').value;
-
-    const btn = document.createElement('button');
-    btn.textContent = 'Delete'
-    btn.addEventListener('click', () => document.querySelector('li').remove());
-
-    document.querySelector('ul').append(li, btn);
+    createToDoItem(event.target.querySelector('#new-task-description').value);
+    document.querySelector('form').reset();
     // Need to remove button element
   })
 });
+
+
+// Create li element then append in #tasks 
+function createToDoItem(task) {
+  const li = document.createElement('li');
+  const btn = document.createElement('button');
+  btn.addEventListener('click', deleteToDoItem);
+  li.textContent = `${task} `;
+  btn.textContent = 'x'
+  li.appendChild(btn);
+  document.querySelector('ul').appendChild(li);
+}
+
+function deleteToDoItem(event) {
+  event.target.parentNode.remove();
+}
