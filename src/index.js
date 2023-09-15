@@ -12,11 +12,15 @@ function createToDoItem(task) {
   const li = document.createElement('li');
   const btn = document.createElement('button');
   btn.addEventListener('click', deleteToDoItem);
-  li.textContent = `${task} `;
-  btn.textContent = 'x'
-  li.appendChild(btn);
-  document.querySelector('ul').appendChild(li);
-  document.querySelector('form').reset();
+  if (task) {
+    li.textContent = `${task} `;
+    btn.textContent = 'x';
+    li.appendChild(btn);
+    document.querySelector('ul').appendChild(li);
+    document.querySelector('form').reset();
+  } else {
+    alert('Enter a task in the box.');
+  }
 }
 
 // Delete item when button is pressed
