@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function createToDoItem(task) {
   const li = document.createElement('li');
   const btn = document.createElement('button');
-  btn.addEventListener('click', deleteToDoItem);
+  btn.addEventListener('click', () => li.remove());
   if (task) {
     li.textContent = `${task} `;
     btn.textContent = 'x';
@@ -21,9 +21,4 @@ function createToDoItem(task) {
   } else {
     alert('Enter a task in the box.');
   }
-}
-
-// Delete item when button is pressed
-function deleteToDoItem(event) {
-  event.target.parentNode.remove();
 }
